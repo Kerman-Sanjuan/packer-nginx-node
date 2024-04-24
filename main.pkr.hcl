@@ -15,10 +15,24 @@ source "amazon-ebs" "ami"{ # Definir que AMI base usamos -> Donde guardar el AMI
 
 
 }
-
+g
 build { # Que instalar, copiar y demas.
+
   sources = ["source.amazon-ebs.ami"] # Podemos crear varios, podriamos juntar providers para que esto funcione.
+  
+  # Ahora se ponen todos los provisioner en el orden que se quiera.
+  #
+  #
+  # 1. Descargar codigo fuente.
+  #
+
+  provisioner "file" {
+
+  }
   provisioner "ansible"{
     playbook_file = "./config/playbook.yml"
   }
+
+
+
 }
